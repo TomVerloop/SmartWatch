@@ -30,11 +30,34 @@ void drawTime(int minutes,int hours)
 	setTextColor(ForeGroundColor, BackGroundColor);
 	setTextSize(2);
 	setCursor(10, _height - 22);
-	char thour = 0;
-	char hour = 0;
-	char minute = 0;
-	char tminute = 0;
-	print("00:00");
+	char bufferm[2];
+	snprintf(bufferm, 2, "%d", minutes);
+	char bufferh[2];
+	snprintf(bufferh, 2, "%d", hours);
+
+
+
+
+	char x[6];
+	if (hours >= 10)
+	{
+		x[0] = (hours / 10) + 48;
+	}else
+	{
+		x[0] = 48;
+	}
+	x[1] = (hours % 10) + 48;
+	x[2] = ':';
+	if (minutes >= 10)
+	{
+		x[3] = (minutes / 10) + 48;
+	}else
+	{
+		x[3] = 48;
+	}
+	x[4] = (minutes % 10) + 48;
+	x[5] = '\0';
+	print(x);
 }
 
 void drawBluetoothConnected(uint8_t connected)

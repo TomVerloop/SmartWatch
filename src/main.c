@@ -19,7 +19,7 @@
 ISR (TIMER2_COMPA_vect)
 {
 	x++;
-	if(x == 16)
+	if(x == 32)
 	{
 		x = 0;
 		milliseconds++;
@@ -30,6 +30,7 @@ ISR (TIMER2_COMPA_vect)
 			if(seconds == 60)
 			{
 				minutes++;
+				seconds = 0;
 				if(minutes == 60)
 				{
 					hours = (hours + 1) % 24;
@@ -87,7 +88,7 @@ int main(void)
 			drawnminutes = seconds;
 			drawnhours = minutes;
 			drawClock(seconds, minutes);
-			//drawTime(seconds,minutes);
+			drawTime(seconds,minutes);
 		}
 	}
 
