@@ -33,6 +33,6 @@ static const double sinlist[] =
 void draw_arm(int position_x, int position_y, int arm_angle, int arm_length,
 		int color);
 
-
+void drawClock(int Seconds, int Minutes);
 
 #endif /* CLOCK_H_ */

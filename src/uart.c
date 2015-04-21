@@ -22,9 +22,9 @@
  */
 
 #include "uart.h"
-
+#include "gfx.h"
 // Debug Mode; comment out on Release
-#define _DEBUG			0
+#define _DEBUG	0
 
 
 /*! \brief Configures baud rate (refer datasheet) */
@@ -43,7 +43,11 @@ void initUART(void)
 
 	// Set frame format = 8-N-1
 	UCSR0C = (_DATA << UCSZ00);
+}
 
+uint8_t byteAvailable(void)
+{
+	return (UCSR0A & _BV(RXC0));
 }
 
 /*! \brief Returns a byte from the serial buffer
@@ -56,7 +60,6 @@ uint8_t getByte(void)
 	while (!(UCSR0A & _BV(RXC0)));
 	return (uint8_t) UDR0;
 }
-
 
 /*! \brief Transmits a byte
  * 	Use this function if the TX interrupt is not enabled.

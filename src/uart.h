@@ -43,8 +43,10 @@
 #define TX_INTEN()		UCSR0B |= _BV(TXCIE0)	// Enable interrupt on TX complete
 #define TX_INTDIS()		UCSR0B &= ~_BV(TXCIE0)	// Disable TX interrupt
 
+
 /* Prototypes */
 void initUART(void);
+uint8_t byteAvailable(void);
 uint8_t getByte(void);
 void putByte(unsigned char data);
 void writeString(char *str);
